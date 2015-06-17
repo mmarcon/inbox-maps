@@ -1,0 +1,4 @@
+dist
+node_modules
+keychain.json
+scripts/env.prod.js
