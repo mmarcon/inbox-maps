@@ -7,14 +7,14 @@ InboxSDK.load('1', IM.credentials.ibsdk).then(function(sdk){
 			title: "Add Map",
 			iconUrl:  chrome.extension.getURL('assets/inbox-button.png'),
 			onClick: function(event) {
-				var utils = IM.Utils,
-					  here = IM.Here;
-				IM.getLocation().then(function(data){
-					utils.log(data);
-					var img = here.getMapImage(data.latitude, data.longitude);
-					event.composeView.insertHTMLIntoBodyAtCursor('<img src="' + img + '" width="250" height="250">');
-
-					// insertTextIntoBodyAtCursor(data.latitude.toFixed(4) + ', ' + data.longitude.toFixed(4));
+				var ctx = {};
+				ctx.modal = sdk.Widgets.showModalView({
+					el: document.createElement('div'),
+					chrome: true,
+					title: 'Inbox Maps',
+					buttons: [
+						IM.Actions.injectCurrentLocation.button(event.composeView, sdk, ctx)
+					]
 				});
 			}
 		});

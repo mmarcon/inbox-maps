@@ -17,6 +17,7 @@
         "scripts/util.js",
         "scripts/here.js",
         "scripts/location.js",
+        "scripts/actions.js",
 
         "inboxsdk.js",
         "content.js"
