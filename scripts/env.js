@@ -1,4 +1,4 @@
-const IM = IM || {};
+var IM = IM || {};
 IM.debug = true;
 IM.credentials = {
     ibsdk: '',

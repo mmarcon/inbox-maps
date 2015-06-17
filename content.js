@@ -7,7 +7,7 @@ InboxSDK.load('1', IM.credentials.ibsdk).then(function(sdk){
 			title: "Add Map",
 			iconUrl:  chrome.extension.getURL('assets/inbox-button.png'),
 			onClick: function(event) {
-				const utils = IM.Utils,
+				var utils = IM.Utils,
 					  here = IM.Here;
 				IM.getLocation().then(function(data){
 					utils.log(data);

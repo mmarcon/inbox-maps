@@ -1,0 +1,26 @@
+{
+  "name": "inbox-maps",
+  "version": "0.1.0",
+  "description": "Add maps to your emails",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mmarcon/inbox-maps.git"
+  },
+  "author": "Massimiliano Marcon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmarcon/inbox-maps/issues"
+  },
+  "homepage": "https://github.com/mmarcon/inbox-maps",
+  "devDependencies": {
+    "load-grunt-tasks": "^3.2.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-copy": "^0.8.0"
+  }
+}

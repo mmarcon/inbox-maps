@@ -13,6 +13,7 @@
       ],
       "js": [
         "scripts/env.js",
+        "scripts/env.prod.js",
         "scripts/util.js",
         "scripts/here.js",
         "scripts/location.js",
