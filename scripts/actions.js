@@ -1,6 +1,6 @@
 IM.Actions = {};
 
-IM.Actions.injectCurrentLocation = function(composeView, sdk){
+IM.Actions.injectCurrentLocation = function(view, sdk){
     var utils = IM.Utils,
     here = IM.Here;
 
@@ -14,7 +14,7 @@ IM.Actions.injectCurrentLocation = function(composeView, sdk){
         utils.log(data);
         message.destroy();
         var img = here.getMapImage(data.latitude, data.longitude);
-        composeView.insertHTMLIntoBodyAtCursor('<img src="' + img + '" width="250" height="250">');
+        view.insertHTMLIntoBodyAtCursor('<img src="' + img + '" width="250" height="250">');
     });
 };
 

@@ -7,9 +7,16 @@ InboxSDK.load('1', IM.credentials.ibsdk).then(function(sdk){
 			title: "Add Map",
 			iconUrl:  chrome.extension.getURL('assets/inbox-button.png'),
 			onClick: function(event) {
-				var ctx = {};
+				var ctx = {},
+					contentElement = document.createElement('div');
+
+				IM.getLocation().then(function(data){
+			        var img = IM.Here.getMapImage(data.latitude, data.longitude);
+			        contentElement.innerHTML = '<img src="' + img + '" width="250" height="250">';
+			    });
+
 				ctx.modal = sdk.Widgets.showModalView({
-					el: document.createElement('div'),
+					el: contentElement,
 					chrome: true,
 					title: 'Inbox Maps',
 					buttons: [
