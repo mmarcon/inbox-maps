@@ -37,7 +37,11 @@ module.exports = function (grunt) {
         copy: {
             assets: {
                 src: 'assets/*',
-                dest: 'dist/',
+                dest: 'dist/'
+            },
+            css: {
+                src: 'css/*',
+                dest: 'dist/'
             }
         }
     });
@@ -47,5 +51,5 @@ module.exports = function (grunt) {
         grunt.file.write(data.dest, JSON.stringify(data.source, data.replacer, 2));
     });
 
-    grunt.registerTask('dist', 'Makes the dist version of the extension', ['jshint', 'uglify', 'manifest', 'copy']);
+    grunt.registerTask('dist', 'Makes the dist version of the extension', ['uglify', 'manifest', 'copy']);
 };

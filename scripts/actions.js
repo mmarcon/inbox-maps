@@ -14,17 +14,6 @@ IM.Actions.injectCurrentLocation = function(view, sdk){
         utils.log(data);
         message.destroy();
         var img = here.getMapImage(data.latitude, data.longitude);
-        view.insertHTMLIntoBodyAtCursor('<img src="' + img + '" width="250" height="250">');
+        view.insertHTMLIntoBodyAtCursor('<a href="https://www.here.com/?x=ep&map=' + data.latitude + ',' + data.longitude + ',16"><img src="' + img + '" width="250" height="250" style="width:250px;height:250px;">');
     });
-};
-
-IM.Actions.injectCurrentLocation.button = function(composeView, sdk, ctx) {
-    return {
-        text: 'Current Location',
-        title: 'Share the current location',
-        onClick: function(){
-            IM.Actions.injectCurrentLocation(composeView, sdk);
-            ctx.modal.close();
-        }
-    };
 };

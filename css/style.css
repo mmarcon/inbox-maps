@@ -1,0 +1,64 @@
+.inbox-maps .tabs, .inbox-maps .views {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.inbox-maps .views {
+    background-color: #eee;
+    padding: 15px 20px;
+}
+
+.inbox-maps .tab {
+    display: inline-block;
+    padding-bottom: 18px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 16px;
+    color: #262626;
+    border-bottom: 2px solid transparent;
+    margin: 0 18px 0 0;
+    cursor: pointer;
+}
+
+.inbox-maps .tab.selected {
+    font-weight: bold;
+    border-bottom: 2px solid #4d90fe;
+}
+
+.inbox-maps .tab:hover {
+    border-bottom: 2px solid #4d90fe;
+}
+
+.inbox-maps .view {
+    display: none;
+    cursor: pointer;
+}
+
+.inbox-maps .view input {
+    width: 232px;
+    display: block;
+    font-family: '.HelveticaNeueDeskInterface-Regular';
+    font-size: 13px;
+    padding: 1px 8px;
+}
+
+.place-results {
+    width: 250px;
+    height: 250px;
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+    list-style-type: none;
+}
+
+.place-results li {
+    display: block;
+    background-color: #f5f5f5;
+    background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1);
+    color: #444;
+    border: 1px solid rgba(0,0,0,0.1);
+    font-weight: bold;
+    padding: 6px 8px;
+    margin: 6px 0;
+}
