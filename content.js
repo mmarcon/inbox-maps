@@ -33,8 +33,6 @@ InboxSDK.load('1', IM.credentials.ibsdk).then(function(sdk){
 				sharePlace.tab.dataset.feature = 'place';
 				sharePlace.view.classList.add('place');
 
-				sharePlace.view.innerHTML = '<img src="https://placekitten.com/g/250/250" width="250" height="250">';
-
 				contentElement.querySelector('.tab-view .tabs').addEventListener('click', function(e){
 					if(e.target.classList.contains('tab')) {
 						var feature = contentElement.querySelector('.' + e.target.dataset.feature);
@@ -107,8 +105,7 @@ InboxSDK.load('1', IM.credentials.ibsdk).then(function(sdk){
 									var id = e.target.dataset.id;
 									var img = IM.Here.getMapImage(coord[0], coord[1], null, 15);
 
-									event.composeView.insertHTMLIntoBodyAtCursor('<a href="https://www.here.com/p/' + id + '">' + name + '</a>');
-									event.composeView.insertHTMLIntoBodyAtCursor('<br><br><a href="https://www.here.com/p/' + id + '"><img src="' + img + '" width="250" height="250" style="width:250px;height:250px;">');
+									event.composeView.insertHTMLIntoBodyAtCursor(IM.Templates.PlaceCard.replace('{NAME}', name).replace(/{ID}/g, id).replace('{SRC}', img));
 									ctx.modal.close();
 								});
 							});
@@ -118,8 +115,23 @@ InboxSDK.load('1', IM.credentials.ibsdk).then(function(sdk){
 
 				shareCurrentLocation.view.addEventListener('click', function(e){
 					e.stopPropagation();
-					IM.Actions.injectCurrentLocation(event.composeView, sdk);
+
+					IM.getLocation().then(function(data){return IM.Here.getAddress(data.latitude, data.longitude);}).then(function(data){
+				        utils.log(data);
+
+				        var img = IM.Here.getMapImage(data.position.latitude, data.position.longitude, null, 14);
+
+				        var html = IM.Templates.CurrentLocationCard
+				        	.replace('{NAME}', data.name)
+				        	.replace(/{LAT}/g, data.position.latitude)
+				        	.replace(/{LON}/g, data.position.longitude)
+				        	.replace('{SRC}', img);
+
+				        event.composeView.insertHTMLIntoBodyAtCursor(html);
+				    });
+
 					ctx.modal.close();
+
 				}, false);
 			}
 		});
